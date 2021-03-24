@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:meta/meta.dart';
 import 'package:my_alquran/model/m_list_alquran.dart';
@@ -16,7 +18,7 @@ class ApiService implements Repository {
         response = await dio.get(
           'surah',
         );
-        return ModelListAlQuran.fromJson(response.data);
+        return ModelListAlQuran.fromJson(json.decode(response.data));
       } on DioError catch (e) {
         throw e.getErrorMessage();
       } catch (error, stacktrace) {
