@@ -1,0 +1,1 @@
+export 'alquran_pages.dart';
