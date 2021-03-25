@@ -180,7 +180,7 @@ class Verse {
 
   Number number;
   Meta meta;
-  Text text;
+  TextQuran text;
   Translation translation;
   Audio audio;
   VerseTafsir tafsir;
@@ -188,7 +188,7 @@ class Verse {
   factory Verse.fromJson(Map<String, dynamic> json) => Verse(
     number: Number.fromJson(json["number"]),
     meta: Meta.fromJson(json["meta"]),
-    text: Text.fromJson(json["text"]),
+    text: TextQuran.fromJson(json["text"]),
     translation: Translation.fromJson(json["translation"]),
     audio: Audio.fromJson(json["audio"]),
     tafsir: VerseTafsir.fromJson(json["tafsir"]),
@@ -336,8 +336,8 @@ class Id {
   };
 }
 
-class Text {
-  Text({
+class TextQuran {
+  TextQuran({
     this.arab,
     this.transliteration,
   });
@@ -345,7 +345,7 @@ class Text {
   String arab;
   Transliteration transliteration;
 
-  factory Text.fromJson(Map<String, dynamic> json) => Text(
+  factory TextQuran.fromJson(Map<String, dynamic> json) => TextQuran(
     arab: json["arab"],
     transliteration: Transliteration.fromJson(json["transliteration"]),
   );

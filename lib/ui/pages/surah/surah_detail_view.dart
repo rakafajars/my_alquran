@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_alquran/bloc/b_alquran/alquran_bloc.dart';
+import 'package:my_alquran/model/m_detail_surah.dart';
 import 'package:my_alquran/ui/widget/custome_page.dart';
 import 'package:relative_scale/relative_scale.dart';
 
@@ -26,6 +27,9 @@ class _SurahDetailViewState extends State<SurahDetailView> {
 
   // Bloc
   AlQuranBloc _alQuranBloc;
+
+  // bool
+  int _currentSelectedAyat = -1;
 
   @override
   void initState() {
@@ -81,11 +85,26 @@ class _SurahDetailViewState extends State<SurahDetailView> {
                                 : Color(0xFFDCDCDC),
                             child: ListTile(
                               dense: true,
-                              trailing: Text(
-                                state.modelDetailSurah.data.verses[index].number
-                                    .inSurah
-                                    .toString(),
-                                textAlign: TextAlign.center,
+                              trailing: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: () {
+                                      if (_currentSelectedAyat == index) {
+                                        _currentSelectedAyat = -1;
+                                      } else {
+                                        _currentSelectedAyat = index;
+                                      }
+                                      setState(() {});
+                                    },
+                                    child: Icon(
+                                      _currentSelectedAyat != index
+                                          ? Icons.play_circle_fill_sharp
+                                          : Icons.pause_circle_filled_sharp,
+                                      size: sy(24),
+                                    ),
+                                  ),
+                                ],
                               ),
                               title: Padding(
                                 padding: const EdgeInsets.only(
