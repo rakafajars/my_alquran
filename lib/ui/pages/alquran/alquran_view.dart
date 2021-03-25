@@ -64,7 +64,7 @@ class _AlQuranViewState extends State<AlQuranView> {
                         itemCount: state.modelListAlQuran.data.length,
                         itemBuilder: (context, int index) {
                           return Container(
-                            height: sy(50),
+                            height: sy(60),
                             width: double.infinity,
                             decoration: BoxDecoration(
                               border: Border(
@@ -75,7 +75,9 @@ class _AlQuranViewState extends State<AlQuranView> {
                               ),
                             ),
                             child: ListTile(
-                              leading: Text('${index + 1}'),
+                              leading: Text(
+                                '${index + 1}',
+                              ),
                               title: Row(
                                 children: [
                                   Text(
@@ -110,6 +112,7 @@ class _AlQuranViewState extends State<AlQuranView> {
                                 ),
                               ),
                               dense: true,
+                              minLeadingWidth: sy(5),
                             ),
                           );
                         },

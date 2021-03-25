@@ -79,8 +79,8 @@ class Data {
 class Name {
   String short;
   String long;
-  Transliteration transliteration;
-  Transliteration translation;
+  TransliterationAlQuran transliteration;
+  TransliterationAlQuran translation;
 
   Name({this.short, this.long, this.transliteration, this.translation});
 
@@ -88,10 +88,10 @@ class Name {
     short = json['short'];
     long = json['long'];
     transliteration = json['transliteration'] != null
-        ? new Transliteration.fromJson(json['transliteration'])
+        ? new TransliterationAlQuran.fromJson(json['transliteration'])
         : null;
     translation = json['translation'] != null
-        ? new Transliteration.fromJson(json['translation'])
+        ? new TransliterationAlQuran.fromJson(json['translation'])
         : null;
   }
 
@@ -109,13 +109,13 @@ class Name {
   }
 }
 
-class Transliteration {
+class TransliterationAlQuran {
   String en;
   String id;
 
-  Transliteration({this.en, this.id});
+  TransliterationAlQuran({this.en, this.id});
 
-  Transliteration.fromJson(Map<String, dynamic> json) {
+  TransliterationAlQuran.fromJson(Map<String, dynamic> json) {
     en = json['en'];
     id = json['id'];
   }

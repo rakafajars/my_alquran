@@ -30,3 +30,29 @@ class AlQuranLoadedError extends AlQuranState {
   @override
   List<Object> get props => [message];
 }
+
+class DetailSurahLoadInProgress extends AlQuranState {
+  @override
+  List<Object> get props => [];
+}
+
+class DetailSurahLoadedSuccess extends AlQuranState {
+  final ModelDetailSurah modelDetailSurah;
+
+  DetailSurahLoadedSuccess({
+   @required this.modelDetailSurah,
+  });
+  @override
+  List<Object> get props => [modelDetailSurah];
+}
+
+class DetailSurahLoadedError extends AlQuranState {
+  final String message;
+
+  DetailSurahLoadedError({
+    @required this.message,
+  });
+
+  @override
+  List<Object> get props => [message];
+}
