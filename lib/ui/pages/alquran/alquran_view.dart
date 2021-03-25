@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_alquran/bloc/b_alquran/alquran_bloc.dart';
+import 'package:my_alquran/config/route_name.dart';
+import 'package:my_alquran/ui/pages/surah/surah_arguments.dart';
 import 'package:my_alquran/ui/widget/custome_page.dart';
 import 'package:relative_scale/relative_scale.dart';
 
@@ -63,56 +65,71 @@ class _AlQuranViewState extends State<AlQuranView> {
                         shrinkWrap: true,
                         itemCount: state.modelListAlQuran.data.length,
                         itemBuilder: (context, int index) {
-                          return Container(
-                            height: sy(60),
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(
-                                  color: Colors.grey,
-                                  width: 1.0,
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                RouteName.detailSurah,
+                                arguments: SurahArguments(
+                                  idSurah: state
+                                      .modelListAlQuran.data[index].number
+                                      .toString(),
+                                  nameSurah: state.modelListAlQuran.data[index]
+                                      .name.transliteration.id,
                                 ),
-                              ),
-                            ),
-                            child: ListTile(
-                              leading: Text(
-                                '${index + 1}',
-                              ),
-                              title: Row(
-                                children: [
-                                  Text(
-                                    state.modelListAlQuran.data[index].name
-                                        .transliteration.id,
-                                    style: GoogleFonts.robotoSlab(
-                                      fontSize: sy(12),
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                              );
+                            },
+                            child: Container(
+                              height: sy(60),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: Colors.grey,
+                                    width: 1.0,
                                   ),
-                                  Text(
-                                    ' (${state.modelListAlQuran.data[index].name.translation.id})',
-                                    style: GoogleFonts.lato(
-                                      fontSize: sy(8),
-                                      fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                              child: ListTile(
+                                leading: Text(
+                                  '${index + 1}',
+                                ),
+                                title: Row(
+                                  children: [
+                                    Text(
+                                      state.modelListAlQuran.data[index].name
+                                          .transliteration.id,
+                                      style: GoogleFonts.robotoSlab(
+                                        fontSize: sy(12),
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
+                                    Text(
+                                      ' (${state.modelListAlQuran.data[index].name.translation.id})',
+                                      style: GoogleFonts.lato(
+                                        fontSize: sy(8),
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                subtitle: Text(
+                                  '${state.modelListAlQuran.data[index].numberOfVerses} Ayat',
+                                  style: GoogleFonts.robotoMono(
+                                    fontSize: sy(12),
+                                    fontWeight: FontWeight.w400,
                                   ),
-                                ],
-                              ),
-                              subtitle: Text(
-                                '${state.modelListAlQuran.data[index].numberOfVerses} Ayat',
-                                style: GoogleFonts.robotoMono(
-                                  fontSize: sy(12),
-                                  fontWeight: FontWeight.w400,
                                 ),
-                              ),
-                              trailing: Text(
-                                state.modelListAlQuran.data[index].name.short,
-                                style: GoogleFonts.robotoSlab(
-                                  fontSize: sy(12),
-                                  fontWeight: FontWeight.w600,
+                                trailing: Text(
+                                  state.modelListAlQuran.data[index].name.short,
+                                  style: GoogleFonts.robotoSlab(
+                                    fontSize: sy(12),
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
+                                dense: true,
+                                minLeadingWidth: sy(5),
                               ),
-                              dense: true,
-                              minLeadingWidth: sy(5),
                             ),
                           );
                         },
