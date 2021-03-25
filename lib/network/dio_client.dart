@@ -12,7 +12,7 @@ Dio dioClient() {
 
   var dio = Dio(options);
   dio.interceptors.add(LogginInterceptors());
-  dio.interceptors.add(alice.getDioInterceptor());
+  // dio.interceptors.add(alice.getDioInterceptor());
 
   return dio;
 }

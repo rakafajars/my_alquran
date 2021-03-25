@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      navigatorKey: alice.getNavigatorKey(),
+      // navigatorKey: alice.getNavigatorKey(),
       debugShowCheckedModeBanner: false,
       routes: RouteConfig.routes,
       title: 'Flutter Starter Pack',

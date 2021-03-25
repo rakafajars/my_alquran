@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,6 +23,9 @@ class SurahDetailView extends StatefulWidget {
 }
 
 class _SurahDetailViewState extends State<SurahDetailView> {
+  AudioPlayer audioPlayer =
+      AudioPlayer(); //VARIABLE YANG AKAN MENG-HANDLE AUDIO
+
   // Refresh
   Completer<void> _refreshCompleter;
 
@@ -35,7 +39,16 @@ class _SurahDetailViewState extends State<SurahDetailView> {
   void initState() {
     _alQuranBloc = BlocProvider.of<AlQuranBloc>(context);
     _refreshCompleter = Completer<void>();
+    ayatEnd();
     super.initState();
+  }
+
+  void ayatEnd() {
+    audioPlayer.onPlayerCompletion.listen((event) {
+      setState(() {
+        _currentSelectedAyat = -1;
+      });
+    });
   }
 
   @override
@@ -89,11 +102,25 @@ class _SurahDetailViewState extends State<SurahDetailView> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   GestureDetector(
-                                    onTap: () {
+                                    onTap: () async {
                                       if (_currentSelectedAyat == index) {
                                         _currentSelectedAyat = -1;
+
+                                        if (_currentSelectedAyat == -1) {
+                                          await audioPlayer.pause();
+                                        }
                                       } else {
                                         _currentSelectedAyat = index;
+                                        // ketika _currentSelectedAyat sama dengan index
+                                        // Maka Ayat akan di jalankan
+                                        if (_currentSelectedAyat == index) {
+                                          await audioPlayer.play(state
+                                              .modelDetailSurah
+                                              .data
+                                              .verses[index]
+                                              .audio
+                                              .primary);
+                                        }
                                       }
                                       setState(() {});
                                     },
