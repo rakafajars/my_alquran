@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_alquran/bloc/b_alquran/alquran_bloc.dart';
-import 'package:my_alquran/model/m_detail_surah.dart';
 import 'package:my_alquran/ui/widget/custome_page.dart';
 import 'package:relative_scale/relative_scale.dart';
 
@@ -49,6 +48,13 @@ class _SurahDetailViewState extends State<SurahDetailView> {
         _currentSelectedAyat = -1;
       });
     });
+  }
+
+  @override
+  void dispose() {
+    _alQuranBloc.close();
+    audioPlayer.dispose();
+    super.dispose();
   }
 
   @override
@@ -98,6 +104,16 @@ class _SurahDetailViewState extends State<SurahDetailView> {
                                 : Color(0xFFDCDCDC),
                             child: ListTile(
                               dense: true,
+                              leading: Text(
+                                state.modelDetailSurah.data.verses[index].number
+                                    .inSurah
+                                    .toString(),
+                                style: GoogleFonts.robotoMono(
+                                  fontSize: sy(12),
+                                  fontWeight: FontWeight.w400,
+                                ),
+                              ),
+                              minLeadingWidth: sy(3),
                               trailing: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -174,7 +190,7 @@ class _SurahDetailViewState extends State<SurahDetailView> {
                             onPressed: () {
                               _alQuranBloc
                                 ..add(
-                                  GetListAlQuranFromApi(),
+                                  GetDetailSurahFromApi(idSurah: widget.idSurah),
                                 );
                             },
                             child: Text(

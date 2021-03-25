@@ -1,7 +1,5 @@
-import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:meta/meta.dart';
 import 'package:my_alquran/model/m_detail_surah.dart';
 import 'package:my_alquran/model/m_list_alquran.dart';
 import 'package:my_alquran/network/api_repository.dart';
@@ -35,6 +33,7 @@ class ApiService implements Repository {
       response = await dio.get(
         'surah/$idSurah',
       );
+
       return ModelDetailSurah.fromJson(response.data);
     } on DioError catch (e) {
       throw e.getErrorMessage();

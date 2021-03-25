@@ -29,6 +29,12 @@ class _AlQuranViewState extends State<AlQuranView> {
   }
 
   @override
+  void dispose() {
+    _alQuranBloc.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return RelativeBuilder(
       builder: (context, height, width, sy, sx) {
@@ -92,7 +98,12 @@ class _AlQuranViewState extends State<AlQuranView> {
                               ),
                               child: ListTile(
                                 leading: Text(
-                                  '${index + 1}',
+                                  state.modelListAlQuran.data[index].number
+                                      .toString(),
+                                  style: GoogleFonts.robotoMono(
+                                    fontSize: sy(12),
+                                    fontWeight: FontWeight.w400,
+                                  ),
                                 ),
                                 title: Row(
                                   children: [

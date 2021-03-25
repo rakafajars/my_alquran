@@ -11,6 +11,7 @@ class ModelListAlQuran {
     status = json['status'];
     message = json['message'];
     if (json['data'] != null) {
+      // ignore: deprecated_member_use
       data = new List<Data>();
       json['data'].forEach((v) {
         data.add(new Data.fromJson(v));
