@@ -9,6 +9,6 @@ void main() {
   Constants.setEnvironment(Environment.PROD);
   Bloc.observer = GlobalBlocObserver();
 
-  initialNotification();
+  // initialNotification();
   runApp(MyApp());
 }

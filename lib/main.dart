@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_alquran/config/route_config.dart';
-import 'package:my_alquran/ui/pages/alquran/alquran.dart';
+import 'package:my_alquran/ui/pages/home/home.dart';
 import 'package:my_alquran/utils/alice_service.dart';
 
 class MyApp extends StatelessWidget {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: InitialAlQuranPages(),
+      home: HomePages(),
     );
   }
 }

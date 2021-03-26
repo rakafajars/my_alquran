@@ -4,7 +4,7 @@ import 'package:my_alquran/utils/logging_interceptor.dart';
 
 Dio dioClient() {
   final options = BaseOptions(
-    baseUrl: 'https://api.quran.sutanlab.id/',
+    // baseUrl: 'https://api.quran.sutanlab.id/',
     connectTimeout: 120000,
     receiveTimeout: 120000,
     contentType: 'application/json',

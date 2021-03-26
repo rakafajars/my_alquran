@@ -10,7 +10,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = GlobalBlocObserver();
 
-  initialNotification();
+  // initialNotification();
   Constants.setEnvironment(Environment.DEV);
   runApp(MyApp());
 }

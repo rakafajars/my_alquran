@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:my_alquran/model/m_detail_surah.dart';
-import 'package:my_alquran/model/m_list_alquran.dart';
+import 'file:///E:/Project/Project%20Baru/my_alquran/lib/model/al-quran/m_detail_surah.dart';
+import 'package:my_alquran/model/al-quran//m_list_alquran.dart';
 import 'package:my_alquran/network/api_repository.dart';
 import 'package:my_alquran/network/api_service.dart';
 
