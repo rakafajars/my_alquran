@@ -5,4 +5,10 @@ TextStyle textFontWeight00 = GoogleFonts.poppins(
   fontWeight: FontWeight.w700,
 );
 
-TextStyle googlePoppins = GoogleFonts.poppins();
+TextStyle googlePoppinsMedium = GoogleFonts.poppins(
+  fontWeight: FontWeight.w500,
+);
+
+TextStyle googlePoppinsRegular = GoogleFonts.poppins(
+  fontWeight: FontWeight.w400,
+);

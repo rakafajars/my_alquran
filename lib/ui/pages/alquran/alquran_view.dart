@@ -79,13 +79,13 @@ class _AlQuranViewState extends State<AlQuranView> {
                       children: [
                         Text(
                           'Bacaan Pilihan',
-                          style: googlePoppins.copyWith(
+                          style: googlePoppinsMedium.copyWith(
                             fontSize: 18,
                           ),
                         ),
                         Text(
                           'Lihat Semua',
-                          style: googlePoppins.copyWith(
+                          style: googlePoppinsMedium.copyWith(
                             fontSize: 10,
                             color: blueColor,
                           ),
@@ -97,7 +97,7 @@ class _AlQuranViewState extends State<AlQuranView> {
                     height: 16,
                   ),
                   SizedBox(
-                    height: sy(55),
+                    height: sy(45),
                     width: double.infinity,
                     child: ListView.builder(
                       padding: EdgeInsets.only(
@@ -123,7 +123,7 @@ class _AlQuranViewState extends State<AlQuranView> {
                             ),
                             child: Text(
                               listModelBacaanPilihan[index].nameBacaan,
-                              style: googlePoppins.copyWith(
+                              style: googlePoppinsMedium.copyWith(
                                 fontSize: 14,
                                 color: whiteColor,
                               ),
@@ -182,49 +182,54 @@ class _AlQuranViewState extends State<AlQuranView> {
                               height: sy(52),
                               width: double.infinity,
                               child: ListTile(
-                                leading: Text(
-                                  state.modelListAlQuran.data[index].number
-                                      .toString(),
-                                  style: GoogleFonts.robotoMono(
-                                    fontSize: sy(12),
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                title: Row(
-                                  children: [
-                                    Text(
-                                      state.modelListAlQuran.data[index].name
-                                          .transliteration.id,
-                                      style: GoogleFonts.robotoSlab(
-                                        fontSize: sy(12),
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    Text(
-                                      ' (${state.modelListAlQuran.data[index].name.translation.id})',
-                                      style: GoogleFonts.lato(
-                                        fontSize: sy(8),
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                subtitle: Text(
-                                  '${state.modelListAlQuran.data[index].numberOfVerses} Ayat',
-                                  style: GoogleFonts.robotoMono(
-                                    fontSize: sy(12),
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                trailing: Text(
-                                  state.modelListAlQuran.data[index].name.short,
-                                  style: GoogleFonts.robotoSlab(
-                                    fontSize: sy(12),
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
                                 dense: true,
                                 minLeadingWidth: sy(5),
+                                leading: Container(
+                                  alignment: Alignment.center,
+                                  width: sy(36),
+                                  height: sy(36),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: blueColor1,
+                                  ),
+                                  child: Text(
+                                    state.modelListAlQuran.data[index].number
+                                        .toString(),
+                                    style: googlePoppinsMedium.copyWith(
+                                      fontSize: 20,
+                                      color: blueColor,
+                                    ),
+                                  ),
+                                ),
+                                title: Text(
+                                  state.modelListAlQuran.data[index].name
+                                      .transliteration.id,
+                                  style: googlePoppinsMedium.copyWith(
+                                    fontSize: 16,
+                                    color: blackColor1,
+                                    letterSpacing: 0.3,
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  '${state.modelListAlQuran.data[index].name.translation.id} | ${state.modelListAlQuran.data[index].numberOfVerses} Ayat',
+                                  style: googlePoppinsRegular.copyWith(
+                                    letterSpacing: 0.3,
+                                    color: Colors.grey,
+                                    fontSize: 12,
+                                  ),
+                                ),
+                                trailing: Padding(
+                                  padding: const EdgeInsets.only(
+                                    right: 24,
+                                  ),
+                                  child: Text(
+                                    state.modelListAlQuran.data[index].name.short,
+                                    style: GoogleFonts.robotoSlab(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                ),
                               ),
                             ),
                           );
