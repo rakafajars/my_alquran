@@ -39,13 +39,21 @@ class _HomePagesState extends State<HomePages> {
                       ),
                     ),
                   ),
-                  Container(
-                    height: sy(120),
-                    width: sy(120),
-                    child: Card(
-                      child: Center(
-                        child: Text(
-                          'Hadits',
+                  InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        RouteName.listHadits,
+                      );
+                    },
+                    child: Container(
+                      height: sy(120),
+                      width: sy(120),
+                      child: Card(
+                        child: Center(
+                          child: Text(
+                            'Hadits',
+                          ),
                         ),
                       ),
                     ),
