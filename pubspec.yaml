@@ -38,6 +38,8 @@ dependencies:
   google_fonts: 1.1.2
   relative_scale: ^2.0.0
   audioplayers: ^0.18.1
+  modal_bottom_sheet: ^2.0.0
+
 
 
 dev_dependencies:

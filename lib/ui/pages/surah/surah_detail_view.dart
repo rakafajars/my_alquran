@@ -4,9 +4,11 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:my_alquran/bloc/b_alquran/alquran_bloc.dart';
 import 'package:my_alquran/theme/theme_color.dart';
 import 'package:my_alquran/theme/theme_text.dart';
+import 'package:my_alquran/ui/pages/surah/surah_bottom_sheet_view.dart';
 import 'package:my_alquran/ui/widget/custome_page.dart';
 import 'package:relative_scale/relative_scale.dart';
 
@@ -24,38 +26,22 @@ class SurahDetailView extends StatefulWidget {
 }
 
 class _SurahDetailViewState extends State<SurahDetailView> {
-  AudioPlayer audioPlayer =
-      AudioPlayer(); //VARIABLE YANG AKAN MENG-HANDLE AUDIO
-
   // Refresh
   Completer<void> _refreshCompleter;
 
   // Bloc
   AlQuranBloc _alQuranBloc;
 
-  // bool
-  int _currentSelectedAyat = -1;
-
   @override
   void initState() {
     _alQuranBloc = BlocProvider.of<AlQuranBloc>(context);
     _refreshCompleter = Completer<void>();
-    ayatEnd();
     super.initState();
-  }
-
-  void ayatEnd() {
-    audioPlayer.onPlayerCompletion.listen((event) {
-      setState(() {
-        _currentSelectedAyat = -1;
-      });
-    });
   }
 
   @override
   void dispose() {
     _alQuranBloc.close();
-    audioPlayer.dispose();
     super.dispose();
   }
 
@@ -191,10 +177,10 @@ class _SurahDetailViewState extends State<SurahDetailView> {
                                           width: double.infinity,
                                           child: Text(
                                             'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيم',
-                                            style: GoogleFonts.lateef(
+                                            style: arabicFont.copyWith(
                                               fontSize: 30,
-                                              fontWeight: FontWeight.w400,
                                             ),
+                                            textAlign: TextAlign.center,
                                           ),
                                         ),
                                   ListView.builder(
@@ -203,145 +189,107 @@ class _SurahDetailViewState extends State<SurahDetailView> {
                                     itemCount: state
                                         .modelDetailSurah.data.verses.length,
                                     itemBuilder: (context, int index) {
-                                      return Container(
-                                        padding: EdgeInsets.only(
-                                          top: 12,
-                                          left: 20,
-                                          right: 20,
-                                          bottom: 16,
-                                        ),
-                                        color: index % 2 == 0
-                                            ? Color(0xFFF0F5FC)
-                                            : Colors.white,
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: Text(
-                                                    '${state.modelDetailSurah.data.verses[index].number.inSurah.toString()}.',
-                                                    style:
-                                                        GoogleFonts.robotoMono(
-                                                      fontSize: sy(12),
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                    ),
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  flex: 7,
-                                                  child: Text(
-                                                    state
-                                                        .modelDetailSurah
-                                                        .data
-                                                        .verses[index]
-                                                        .text
-                                                        .arab,
-                                                    style: arabicFont.copyWith(
-                                                      fontSize: sy(24),
-                                                    ),
-                                                    textAlign: TextAlign.right,
-                                                  ),
-                                                ),
-                                              ],
+                                      return GestureDetector(
+                                        onTap: () =>
+                                            showMaterialModalBottomSheet(
+                                          context: context,
+                                          expand: false,
+                                          elevation: 0.0,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(30.0),
+                                              topRight: Radius.circular(30.0),
                                             ),
-                                            Text(
-                                              state.modelDetailSurah.data
-                                                  .verses[index].translation.id,
-                                              style:
-                                                  googlePoppinsRegular.copyWith(
-                                                letterSpacing: 0.3,
-                                                color: Colors.grey,
-                                                fontSize: 12,
+                                          ),
+                                          backgroundColor: Colors.white,
+                                          builder: (context) =>
+                                              SurahBottomSheetView(
+                                            nameSurah: widget.nameSurah,
+                                            ayatSurah: state
+                                                .modelDetailSurah
+                                                .data
+                                                .verses[index]
+                                                .number
+                                                .inSurah
+                                                .toString(),
+                                            indexAudio: index,
+                                            urlAudio: state
+                                                .modelDetailSurah
+                                                .data
+                                                .verses[index]
+                                                .audio
+                                                .primary,
+                                            textarab: state.modelDetailSurah
+                                                .data.verses[index].text.arab,
+                                          ),
+                                        ),
+                                        child: Container(
+                                          padding: EdgeInsets.only(
+                                            top: 12,
+                                            left: 20,
+                                            right: 20,
+                                            bottom: 16,
+                                          ),
+                                          color: index % 2 == 0
+                                              ? Color(0xFFF0F5FC)
+                                              : Colors.white,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Expanded(
+                                                    flex: 1,
+                                                    child: Text(
+                                                      '${state.modelDetailSurah.data.verses[index].number.inSurah.toString()}.',
+                                                      style: GoogleFonts
+                                                          .robotoMono(
+                                                        fontSize: sy(12),
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    flex: 7,
+                                                    child: Text(
+                                                      state
+                                                          .modelDetailSurah
+                                                          .data
+                                                          .verses[index]
+                                                          .text
+                                                          .arab,
+                                                      style:
+                                                          arabicFont.copyWith(
+                                                        fontSize: 30,
+                                                      ),
+                                                      textAlign:
+                                                          TextAlign.right,
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
-                                              textAlign: TextAlign.justify,
-                                            ),
-                                          ],
+                                              Text(
+                                                state
+                                                    .modelDetailSurah
+                                                    .data
+                                                    .verses[index]
+                                                    .translation
+                                                    .id,
+                                                style: googlePoppinsRegular
+                                                    .copyWith(
+                                                  letterSpacing: 0.3,
+                                                  color: Colors.grey,
+                                                  fontSize: 12,
+                                                ),
+                                                textAlign: TextAlign.justify,
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        // child: ListTile(
-                                        //   dense: true,
-                                        //   leading: Text(
-                                        //     state.modelDetailSurah.data
-                                        //         .verses[index].number.inSurah
-                                        //         .toString(),
-                                        //     style: GoogleFonts.robotoMono(
-                                        //       fontSize: sy(12),
-                                        //       fontWeight: FontWeight.w400,
-                                        //     ),
-                                        //   ),
-                                        //   minLeadingWidth: sy(3),
-                                        //   trailing: Column(
-                                        //     mainAxisAlignment:
-                                        //         MainAxisAlignment.center,
-                                        //     children: [
-                                        //       GestureDetector(
-                                        //         onTap: () async {
-                                        //           if (_currentSelectedAyat ==
-                                        //               index) {
-                                        //             _currentSelectedAyat = -1;
-                                        //
-                                        //             if (_currentSelectedAyat ==
-                                        //                 -1) {
-                                        //               await audioPlayer.pause();
-                                        //             }
-                                        //           } else {
-                                        //             _currentSelectedAyat =
-                                        //                 index;
-                                        //             // ketika _currentSelectedAyat sama dengan index
-                                        //             // Maka Ayat akan di jalankan
-                                        //             if (_currentSelectedAyat ==
-                                        //                 index) {
-                                        //               await audioPlayer.play(
-                                        //                   state
-                                        //                       .modelDetailSurah
-                                        //                       .data
-                                        //                       .verses[index]
-                                        //                       .audio
-                                        //                       .primary);
-                                        //             }
-                                        //           }
-                                        //           setState(() {});
-                                        //         },
-                                        //         child: Icon(
-                                        //           _currentSelectedAyat != index
-                                        //               ? Icons
-                                        //                   .play_circle_fill_sharp
-                                        //               : Icons
-                                        //                   .pause_circle_filled_sharp,
-                                        //           size: sy(24),
-                                        //         ),
-                                        //       ),
-                                        //     ],
-                                        //   ),
-                                        //   title: Padding(
-                                        //     padding: const EdgeInsets.only(
-                                        //       left: 28.0,
-                                        //     ),
-                                        //     child: Text(
-                                        //       state.modelDetailSurah.data
-                                        //           .verses[index].text.arab,
-                                        //       style: GoogleFonts.lateef(
-                                        //         fontSize: sy(24),
-                                        //         fontWeight: FontWeight.w400,
-                                        //       ),
-                                        //       textAlign: TextAlign.right,
-                                        //     ),
-                                        //   ),
-                                        //   subtitle: Text(
-                                        //     state.modelDetailSurah.data
-                                        //         .verses[index].translation.id,
-                                        //     style: GoogleFonts.robotoMono(
-                                        //       fontSize: sy(12),
-                                        //       fontWeight: FontWeight.w400,
-                                        //     ),
-                                        //     textAlign: TextAlign.justify,
-                                        //   ),
-                                        // ),
                                       );
                                     },
                                   ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_alquran/config/route_name.dart';
-import 'file:///E:/Project/Project%20Baru/my_alquran/lib/ui/pages/custome_tab_bar.dart';
+import 'package:my_alquran/ui/pages/custome_tab_bar.dart';
 import 'package:my_alquran/ui/pages/hadits/hadits_pages.dart';
 import 'package:my_alquran/ui/pages/surah/surah_pages.dart';
 

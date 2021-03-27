@@ -135,9 +135,8 @@ class _AlQuranViewState extends State<AlQuranView> {
                                       child: Text(
                                         state.modelListAlQuran.data[index].name
                                             .short,
-                                        style: GoogleFonts.robotoSlab(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w300,
+                                        style: arabicFont.copyWith(
+                                          fontSize: 30,
                                         ),
                                       ),
                                     ),

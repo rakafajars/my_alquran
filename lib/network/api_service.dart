@@ -20,7 +20,7 @@ class ApiService implements Repository {
       response = await dio.get(
         '$baseUrlAlQuran/surah',
       );
-      return ModelListAlQuran.fromJson(json.decode(response.data));
+      return ModelListAlQuran.fromJson(response.data);
     } on DioError catch (e) {
       throw e.getErrorMessage();
     } catch (error, stacktrace) {
