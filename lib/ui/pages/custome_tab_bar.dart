@@ -95,7 +95,7 @@ class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
                         itemBuilder: (context, int index) {
                           return Padding(
                             padding: EdgeInsets.only(
-                              right: 12,
+                              right: 24,
                             ),
                             child: Stack(
                               children: [

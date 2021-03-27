@@ -12,3 +12,7 @@ TextStyle googlePoppinsMedium = GoogleFonts.poppins(
 TextStyle googlePoppinsRegular = GoogleFonts.poppins(
   fontWeight: FontWeight.w400,
 );
+
+TextStyle arabicFont = TextStyle(
+  fontFamily: 'Traditional Arabic',
+);
