@@ -43,99 +43,6 @@ class _AlQuranViewState extends State<AlQuranView> {
         return CustomePage(
           scaffold: Scaffold(
             backgroundColor: whiteColor,
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(
-                sy(150),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppBar(
-                    backgroundColor: whiteColor,
-                    elevation: 0.0,
-                    iconTheme: IconThemeData(
-                      color: blackColor,
-                      size: 24,
-                    ),
-                    actions: <Widget>[
-                      IconButton(
-                        icon: Icon(
-                          Icons.more_vert,
-                          color: blackColor1,
-                          size: 24,
-                        ),
-                        onPressed: () {},
-                      )
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 21,
-                      right: 19,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Bacaan Pilihan',
-                          style: googlePoppinsMedium.copyWith(
-                            fontSize: 18,
-                          ),
-                        ),
-                        Text(
-                          'Lihat Semua',
-                          style: googlePoppinsMedium.copyWith(
-                            fontSize: 10,
-                            color: blueColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 16,
-                  ),
-                  SizedBox(
-                    height: sy(45),
-                    width: double.infinity,
-                    child: ListView.builder(
-                      padding: EdgeInsets.only(
-                        left: 21,
-                      ),
-                      itemCount: listModelBacaanPilihan.length,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, int index) {
-                        return Padding(
-                          padding: EdgeInsets.only(
-                            right: 12,
-                          ),
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: sy(65),
-                            width: sy(142),
-                            decoration: BoxDecoration(
-                              color: blueColor,
-                              borderRadius: BorderRadius.circular(
-                                sy(16),
-                              ),
-                            ),
-                            child: Text(
-                              listModelBacaanPilihan[index].nameBacaan,
-                              style: googlePoppinsMedium.copyWith(
-                                fontSize: 14,
-                                color: whiteColor,
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            ),
             body: BlocListener<AlQuranBloc, AlQuranState>(
               listener: (context, state) {
                 if (state is AlQuranLoadInProgress) {
@@ -178,59 +85,75 @@ class _AlQuranViewState extends State<AlQuranView> {
                                 ),
                               );
                             },
-                            child: Container(
-                              height: sy(52),
-                              width: double.infinity,
-                              child: ListTile(
-                                dense: true,
-                                minLeadingWidth: sy(5),
-                                leading: Container(
-                                  alignment: Alignment.center,
-                                  width: sy(36),
-                                  height: sy(36),
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: blueColor1,
-                                  ),
-                                  child: Text(
-                                    state.modelListAlQuran.data[index].number
-                                        .toString(),
-                                    style: googlePoppinsMedium.copyWith(
-                                      fontSize: 20,
-                                      color: blueColor,
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: sy(52),
+                                  width: double.infinity,
+                                  child: ListTile(
+                                    dense: true,
+                                    minLeadingWidth: sy(5),
+                                    leading: Container(
+                                      alignment: Alignment.center,
+                                      width: sy(36),
+                                      height: sy(36),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: blueColor1,
+                                      ),
+                                      child: Text(
+                                        state
+                                            .modelListAlQuran.data[index].number
+                                            .toString(),
+                                        style: googlePoppinsMedium.copyWith(
+                                          fontSize: 20,
+                                          color: blueColor,
+                                        ),
+                                      ),
+                                    ),
+                                    title: Text(
+                                      state.modelListAlQuran.data[index].name
+                                          .transliteration.id,
+                                      style: googlePoppinsMedium.copyWith(
+                                        fontSize: 16,
+                                        color: blackColor1,
+                                        letterSpacing: 0.3,
+                                      ),
+                                    ),
+                                    subtitle: Text(
+                                      '${state.modelListAlQuran.data[index].name.translation.id} | ${state.modelListAlQuran.data[index].numberOfVerses} Ayat',
+                                      style: googlePoppinsRegular.copyWith(
+                                        letterSpacing: 0.3,
+                                        color: Colors.grey,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    trailing: Padding(
+                                      padding: const EdgeInsets.only(
+                                        right: 24,
+                                      ),
+                                      child: Text(
+                                        state.modelListAlQuran.data[index].name
+                                            .short,
+                                        style: GoogleFonts.robotoSlab(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
-                                title: Text(
-                                  state.modelListAlQuran.data[index].name
-                                      .transliteration.id,
-                                  style: googlePoppinsMedium.copyWith(
-                                    fontSize: 16,
-                                    color: blackColor1,
-                                    letterSpacing: 0.3,
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                    right: 20,
+                                    left: 76,
+                                  ),
+                                  child: Divider(
+                                    thickness: 1,
+                                    color: greyColor,
                                   ),
                                 ),
-                                subtitle: Text(
-                                  '${state.modelListAlQuran.data[index].name.translation.id} | ${state.modelListAlQuran.data[index].numberOfVerses} Ayat',
-                                  style: googlePoppinsRegular.copyWith(
-                                    letterSpacing: 0.3,
-                                    color: Colors.grey,
-                                    fontSize: 12,
-                                  ),
-                                ),
-                                trailing: Padding(
-                                  padding: const EdgeInsets.only(
-                                    right: 24,
-                                  ),
-                                  child: Text(
-                                    state.modelListAlQuran.data[index].name.short,
-                                    style: GoogleFonts.robotoSlab(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              ],
                             ),
                           );
                         },
