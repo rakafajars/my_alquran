@@ -113,13 +113,28 @@ class _SurahDetailViewState extends State<SurahDetailView> {
                 cubit: _alQuranBloc,
                 builder: (context, state) {
                   if (state is DetailSurahLoadInProgress) {
-                    return Center(
-                      child: CircularProgressIndicator(),
+                    return Column(
+                      children: [
+                        Container(
+                          height: sy(32),
+                          padding: EdgeInsets.only(
+                            left: 20,
+                            right: 18,
+                          ),
+                          width: double.infinity,
+                          color: blueColor,
+                        ),
+                        Container(
+                          height: sy(300),
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                      ],
                     );
                   }
                   if (state is DetailSurahLoadedSuccess) {
-                    var juz = state.modelDetailSurah.data.verses
-                        .map((e) => e.meta.juz);
+                    var juz = state.modelDetailSurah.data.verses.first;
                     return RefreshIndicator(
                       onRefresh: () {
                         _alQuranBloc
@@ -153,13 +168,13 @@ class _SurahDetailViewState extends State<SurahDetailView> {
                                   ),
                                 ),
                                 Text(
-                                  'Juz 30',
+                                  'Juz ${juz.meta.juz}',
                                   style: googlePoppinsMedium.copyWith(
                                     fontSize: 16,
                                     letterSpacing: 0.3,
                                     color: whiteColor,
                                   ),
-                                )
+                                ),
                               ],
                             ),
                           ),
