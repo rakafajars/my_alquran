@@ -4,7 +4,7 @@ abstract class HaditsState extends Equatable {
   const HaditsState();
 }
 
-class HaditsLoadInProgress extends HaditsState {
+class ListHaditsLoadInProgress extends HaditsState {
   @override
   List<Object> get props => [];
 }
