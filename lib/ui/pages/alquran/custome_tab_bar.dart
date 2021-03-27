@@ -181,7 +181,6 @@ class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
                           // isScrollable: true,
                           indicatorWeight: 2.0,
                           indicatorColor: blackColor1,
-
                           tabs: <Widget>[
                             Tab(
                               text: 'Surat',
