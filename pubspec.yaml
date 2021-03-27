@@ -39,7 +39,7 @@ dependencies:
   relative_scale: ^2.0.0
   audioplayers: ^0.18.1
   modal_bottom_sheet: ^2.0.0
-
+  share: ^2.0.1
 
 
 dev_dependencies:

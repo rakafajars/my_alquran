@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:my_alquran/theme/theme_color.dart';
 import 'package:my_alquran/theme/theme_text.dart';
 import 'package:relative_scale/relative_scale.dart';
+import 'package:share/share.dart';
 
 class SurahBottomSheetView extends StatefulWidget {
   final String nameSurah;
@@ -110,7 +111,12 @@ class _SurahBottomSheetViewState extends State<SurahBottomSheetView> {
                       color: Color(0xFF595959),
                     ),
                     nameFunction: 'Bagikan Ayat',
-                    onTap: () {},
+                    onTap: () async {
+                      Share.share(
+                        widget.textarab,
+                        subject: '${widget.nameSurah} : ${widget.ayatSurah}',
+                      );
+                    },
                   ),
                   buttonFunctionSurah(
                     icon: Icon(
