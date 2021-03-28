@@ -99,7 +99,7 @@ class _AlQuranViewState extends State<AlQuranView> {
                                       height: sy(36),
                                       decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: blueColor1,
+                                        color: greyColor1,
                                       ),
                                       child: Text(
                                         state

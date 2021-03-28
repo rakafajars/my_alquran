@@ -44,14 +44,14 @@ class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
                         size: 24,
                       ),
                       actions: <Widget>[
-                        // IconButton(
-                        //   icon: Icon(
-                        //     Icons.more_vert,
-                        //     color: blackColor1,
-                        //     size: 24,
-                        //   ),
-                        //   onPressed: () {},
-                        // )
+                        IconButton(
+                          icon: Icon(
+                            Icons.more_vert,
+                            color: blackColor1,
+                            size: 24,
+                          ),
+                          onPressed: () {},
+                        )
                       ],
                     ),
                     Padding(
@@ -73,7 +73,7 @@ class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
                             'Lihat Semua',
                             style: googlePoppinsMedium.copyWith(
                               fontSize: 10,
-                              color: blueColor,
+                              color: blueColor2,
                             ),
                           ),
                         ],

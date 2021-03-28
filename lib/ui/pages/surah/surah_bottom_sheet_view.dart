@@ -149,6 +149,15 @@ class _SurahBottomSheetViewState extends State<SurahBottomSheetView> {
                   ),
                   buttonFunctionSurah(
                     icon: Icon(
+                      Icons.favorite_border_outlined,
+                      size: sy(24),
+                      color: Color(0xFF595959),
+                    ),
+                    nameFunction: 'Tambahkan ke bookmark',
+                    onTap: () {},
+                  ),
+                  buttonFunctionSurah(
+                    icon: Icon(
                       Icons.bookmark_border,
                       size: sy(24),
                       color: Color(0xFF595959),
