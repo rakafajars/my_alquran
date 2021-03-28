@@ -10,3 +10,4 @@ const Color blueColor1 = Color(0xFFCEECFD);
 const Color blueColor2 = Color(0xFF1778B0);
 const Color greyColor = Color(0xFFECECEC);
 const Color greyColor1 = Color(0xFFEDF3F7);
+const Color orangeColor = Color(0xFFFAC915);

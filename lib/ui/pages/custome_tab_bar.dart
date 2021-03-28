@@ -189,7 +189,7 @@ class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
                               text: 'Juz',
                             ),
                             Tab(
-                              text: 'BookMark',
+                              text: 'Bookmark',
                             ),
                           ],
                         ),

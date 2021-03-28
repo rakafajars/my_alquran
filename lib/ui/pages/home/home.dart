@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_alquran/config/route_name.dart';
 import 'package:my_alquran/theme/theme_color.dart';
 import 'package:my_alquran/theme/theme_text.dart';
@@ -35,6 +36,88 @@ class _HomePagesState extends State<HomePages> {
                           borderRadius: BorderRadius.only(
                             bottomRight: Radius.circular(30.0),
                             bottomLeft: Radius.circular(30.0),
+                          ),
+                        ),
+                        child: SafeArea(
+                          child: Container(
+                            width: double.infinity,
+                            height: sy(250),
+                            padding: EdgeInsets.only(
+                              left: 20,
+                              right: 20,
+                              bottom: 20,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Al-Hijrah',
+                                        style: GoogleFonts.lora(
+                                          color: whiteColor,
+                                          letterSpacing: 0.3,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.add_alert,
+                                        color: whiteColor,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Dzuhur 11.57',
+                                        style: GoogleFonts.poppins(
+                                          color: orangeColor,
+                                          letterSpacing: 0.3,
+                                          fontSize: 28,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        '10 menit lagi',
+                                        style: googlePoppinsMedium.copyWith(
+                                          color: whiteColor,
+                                          letterSpacing: 0.3,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Al-Hijrah',
+                                        style: GoogleFonts.lora(
+                                          color: whiteColor,
+                                          letterSpacing: 0.3,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Icon(
+                                        Icons.add_alert,
+                                        color: whiteColor,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -171,6 +254,7 @@ class _HomePagesState extends State<HomePages> {
                   style: googlePoppinsRegular.copyWith(
                     fontSize: 10,
                     color: blackColor2,
+                    letterSpacing: 0.3,
                   ),
                   textAlign: TextAlign.center,
                 ),

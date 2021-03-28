@@ -67,95 +67,194 @@ class _AlQuranViewState extends State<AlQuranView> {
                           );
                         return _refreshCompleter.future;
                       },
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: state.modelListAlQuran.data.length,
-                        itemBuilder: (context, int index) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                context,
-                                RouteName.detailSurah,
-                                arguments: SurahArguments(
-                                  idSurah: state
-                                      .modelListAlQuran.data[index].number
-                                      .toString(),
-                                  nameSurah: state.modelListAlQuran.data[index]
-                                      .name.transliteration.id,
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          ListView.builder(
+                            shrinkWrap: true,
+                            padding: EdgeInsets.only(
+                              bottom: sy(90),
+                            ),
+                            itemCount: state.modelListAlQuran.data.length,
+                            itemBuilder: (context, int index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                    context,
+                                    RouteName.detailSurah,
+                                    arguments: SurahArguments(
+                                      idSurah: state
+                                          .modelListAlQuran.data[index].number
+                                          .toString(),
+                                      nameSurah: state.modelListAlQuran
+                                          .data[index].name.transliteration.id,
+                                    ),
+                                  );
+                                },
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      height: sy(52),
+                                      width: double.infinity,
+                                      child: ListTile(
+                                        dense: true,
+                                        minLeadingWidth: sy(5),
+                                        leading: Container(
+                                          alignment: Alignment.center,
+                                          width: sy(36),
+                                          height: sy(36),
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: greyColor1,
+                                          ),
+                                          child: Text(
+                                            state.modelListAlQuran.data[index]
+                                                .number
+                                                .toString(),
+                                            style: googlePoppinsMedium.copyWith(
+                                              fontSize: 20,
+                                              color: blueColor,
+                                            ),
+                                          ),
+                                        ),
+                                        title: Text(
+                                          state.modelListAlQuran.data[index]
+                                              .name.transliteration.id,
+                                          style: googlePoppinsMedium.copyWith(
+                                            fontSize: 16,
+                                            color: blackColor1,
+                                            letterSpacing: 0.3,
+                                          ),
+                                        ),
+                                        subtitle: Text(
+                                          '${state.modelListAlQuran.data[index].name.translation.id} | ${state.modelListAlQuran.data[index].numberOfVerses} Ayat',
+                                          style: googlePoppinsRegular.copyWith(
+                                            letterSpacing: 0.3,
+                                            color: Colors.grey,
+                                            fontSize: 12,
+                                          ),
+                                        ),
+                                        trailing: Padding(
+                                          padding: const EdgeInsets.only(
+                                            right: 24,
+                                          ),
+                                          child: Text(
+                                            state.modelListAlQuran.data[index]
+                                                .name.short,
+                                            style: arabicFont.copyWith(
+                                              fontSize: 30,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        right: 20,
+                                        left: 76,
+                                      ),
+                                      child: Divider(
+                                        thickness: 1,
+                                        color: greyColor,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               );
                             },
-                            child: Column(
+                          ),
+                          Container(
+                            height: sy(84),
+                            width: double.infinity,
+                            padding: EdgeInsets.only(
+                              left: 20,
+                              right: 20,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 1,
+                                  blurRadius: 3,
+                                  offset: Offset(
+                                    0,
+                                    3,
+                                  ), // changes position of shadow
+                                ),
+                              ],
+                            ),
+                            alignment: Alignment.centerLeft,
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  height: sy(52),
-                                  width: double.infinity,
-                                  child: ListTile(
-                                    dense: true,
-                                    minLeadingWidth: sy(5),
-                                    leading: Container(
-                                      alignment: Alignment.center,
-                                      width: sy(36),
-                                      height: sy(36),
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: greyColor1,
+                                Expanded(
+                                  flex: 1,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.bookmark,
+                                        size: sy(24),
+                                        color: orangeColor,
                                       ),
-                                      child: Text(
-                                        state
-                                            .modelListAlQuran.data[index].number
-                                            .toString(),
-                                        style: googlePoppinsMedium.copyWith(
-                                          fontSize: 20,
-                                          color: blueColor,
-                                        ),
+                                      SizedBox(
+                                        width: sy(8),
                                       ),
-                                    ),
-                                    title: Text(
-                                      state.modelListAlQuran.data[index].name
-                                          .transliteration.id,
-                                      style: googlePoppinsMedium.copyWith(
-                                        fontSize: 16,
-                                        color: blackColor1,
-                                        letterSpacing: 0.3,
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            'Terakhir dibaca',
+                                            style:
+                                                googlePoppinsRegular.copyWith(
+                                              fontSize: sy(10),
+                                              letterSpacing: 0.3,
+                                              color: blackColor1,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Al-Qamar Ayat 28',
+                                            style: googlePoppinsMedium.copyWith(
+                                              fontSize: sy(14),
+                                              letterSpacing: 0.3,
+                                              color: blackColor1,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
-                                    subtitle: Text(
-                                      '${state.modelListAlQuran.data[index].name.translation.id} | ${state.modelListAlQuran.data[index].numberOfVerses} Ayat',
-                                      style: googlePoppinsRegular.copyWith(
-                                        letterSpacing: 0.3,
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                      ),
-                                    ),
-                                    trailing: Padding(
-                                      padding: const EdgeInsets.only(
-                                        right: 24,
-                                      ),
-                                      child: Text(
-                                        state.modelListAlQuran.data[index].name
-                                            .short,
-                                        style: arabicFont.copyWith(
-                                          fontSize: 30,
-                                        ),
-                                      ),
-                                    ),
+                                    ],
                                   ),
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                    right: 20,
-                                    left: 76,
+                                ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+
+                                    primary: blueColor,
+                                    textStyle: googlePoppinsMedium.copyWith(
+                                      color: whiteColor,
+                                      letterSpacing: 0.3,
+                                      fontSize: 14,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: new BorderRadius.circular(
+                                        8.0,
+                                      ),
+                                    ),
                                   ),
-                                  child: Divider(
-                                    thickness: 1,
-                                    color: greyColor,
+                                  onPressed: () {},
+                                  child: Text(
+                                    'Lanjut Baca',
                                   ),
                                 ),
                               ],
                             ),
-                          );
-                        },
+                          ),
+                        ],
                       ),
                     );
                   }
