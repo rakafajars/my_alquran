@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_alquran/bloc/b_alquran/alquran_bloc.dart';
 import 'package:my_alquran/config/route_name.dart';
 import 'package:my_alquran/theme/theme_color.dart';

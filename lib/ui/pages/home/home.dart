@@ -24,6 +24,9 @@ class _HomePagesState extends State<HomePages> {
           scaffold: Scaffold(
             backgroundColor: greyColor1,
             body: SingleChildScrollView(
+              padding: EdgeInsets.only(
+                bottom: 8,
+              ),
               child: Column(
                 children: [
                   Stack(
@@ -195,8 +198,172 @@ class _HomePagesState extends State<HomePages> {
                       ],
                     ),
                   ),
+                  Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: 20,
+                          bottom: 16,
+                        ),
+                        padding: EdgeInsets.only(
+                          left: 20,
+                        ),
+                        height: sy(27),
+                        width: double.infinity,
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Group Ngaji',
+                          style: googlePoppinsMedium.copyWith(
+                            fontSize: 18,
+                            color: blackColor2,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: sy(100),
+                        width: double.infinity,
+                        child: ListView(
+                          padding: EdgeInsets.only(
+                            left: 20,
+                          ),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            groupNgaji(),
+                            groupNgaji(),
+                            groupNgaji(),
+                            groupNgaji(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget groupNgaji() {
+    return RelativeBuilder(
+      builder: (context, height, width, sy, sx) {
+        return Padding(
+          padding: EdgeInsets.only(
+            right: 16,
+          ),
+          child: Container(
+            height: sy(100),
+            width: sy(225),
+            decoration: BoxDecoration(
+              color: whiteColor,
+              borderRadius: BorderRadius.all(
+                Radius.circular(
+                  8.0,
+                ),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ListTile(
+                  leading: Icon(
+                    Icons.image,
+                    size: sy(35),
+                  ),
+                  minLeadingWidth: sy(2),
+                  title: Text(
+                    'Belajar Tajwid Bacth 1',
+                    style: googlePoppinsMedium.copyWith(
+                      fontSize: 14,
+                      color: blackColor2,
+                      letterSpacing: 0.3,
+                    ),
+                  ),
+                  subtitle: Text(
+                    '11 - 20 Desember 2021',
+                    style: googlePoppinsRegular.copyWith(
+                      fontSize: 10,
+                      letterSpacing: 0.3,
+                      color: blackColor2,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 20,
+                    right: 24,
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            width: sy(65),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  height: sy(24),
+                                  width: sy(24),
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.red),
+                                ),
+                                Positioned(
+                                  left: sy(20),
+                                  child: Container(
+                                    height: sy(24),
+                                    width: sy(24),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.orange,
+                                    ),
+                                  ),
+                                ),
+                                Positioned(
+                                  left: sy(40),
+                                  child: Container(
+                                    height: sy(24),
+                                    width: sy(24),
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.blue,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            '+ 20 Anggota',
+                            style: googlePoppinsRegular.copyWith(
+                              fontSize: 10,
+                              letterSpacing: 0.3,
+                              color: blackColor2,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Icon(
+                        Icons.add_circle_outline,
+                        size: sy(16),
+                        color: greyColor,
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
+              ],
             ),
           ),
         );
