@@ -11,15 +11,6 @@ class CustomeTabBarAlQuran extends StatefulWidget {
 }
 
 class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
-
-  // Controller
-  TabController tabController;
-
-  @override
-  void dispose() {
-    super.dispose();
-    tabController.dispose();
-  }
   @override
   Widget build(BuildContext context) {
     return RelativeBuilder(
@@ -176,7 +167,6 @@ class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
                             letterSpacing: 0.3,
                             color: blackColor1,
                           ),
-                          controller: tabController,
                           indicatorSize: TabBarIndicatorSize.label,
                           // isScrollable: true,
                           indicatorWeight: 2.0,
@@ -213,7 +203,6 @@ class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
                 ),
               ),
               body: TabBarView(
-                controller: tabController,
                 children: [
                   InitialAlQuranPages(),
                   Container(),
@@ -227,7 +216,6 @@ class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
     );
   }
 }
-
 
 class ModelBacaanPilihan {
   final int id;

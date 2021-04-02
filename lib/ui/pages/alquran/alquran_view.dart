@@ -143,6 +143,7 @@ class _AlQuranViewState extends State<AlQuranView> {
                                             style: arabicFont.copyWith(
                                               fontSize: 30,
                                             ),
+                                            textAlign: TextAlign.right,
                                           ),
                                         ),
                                       ),
@@ -212,7 +213,7 @@ class _AlQuranViewState extends State<AlQuranView> {
                                             'Terakhir dibaca',
                                             style:
                                                 googlePoppinsRegular.copyWith(
-                                              fontSize: sy(10),
+                                              fontSize: 10,
                                               letterSpacing: 0.3,
                                               color: blackColor1,
                                             ),
@@ -220,7 +221,7 @@ class _AlQuranViewState extends State<AlQuranView> {
                                           Text(
                                             'Al-Qamar Ayat 28',
                                             style: googlePoppinsMedium.copyWith(
-                                              fontSize: sy(14),
+                                              fontSize: 14,
                                               letterSpacing: 0.3,
                                               color: blackColor1,
                                             ),

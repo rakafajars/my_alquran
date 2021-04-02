@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_alquran/config/route_name.dart';
 import 'package:my_alquran/theme/theme_color.dart';
 import 'package:my_alquran/theme/theme_text.dart';
+import 'package:my_alquran/ui/pages/home/home_kajian.dart';
+import 'package:my_alquran/ui/pages/home/home_menu.dart';
+import 'package:my_alquran/ui/pages/home/home_ngaji.dart';
 import 'package:my_alquran/ui/widget/custome_page.dart';
 import 'package:relative_scale/relative_scale.dart';
 
@@ -25,7 +26,7 @@ class _HomePagesState extends State<HomePages> {
             backgroundColor: greyColor1,
             body: SingleChildScrollView(
               padding: EdgeInsets.only(
-                bottom: 8,
+                bottom: 16,
               ),
               child: Column(
                 children: [
@@ -103,18 +104,78 @@ class _HomePagesState extends State<HomePages> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
-                                        'Al-Hijrah',
-                                        style: GoogleFonts.lora(
-                                          color: whiteColor,
-                                          letterSpacing: 0.3,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.location_on_outlined,
+                                            color: whiteColor,
+                                            size: 20,
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Column(
+                                            children: [
+                                              Text(
+                                                'Kota Bandung',
+                                                style: googlePoppinsMedium
+                                                    .copyWith(
+                                                  color: orangeColor1,
+                                                  letterSpacing: 0.3,
+                                                  fontSize: 10,
+                                                ),
+                                              ),
+                                              Text(
+                                                'Kecamatan Cibiru',
+                                                style: googlePoppinsRegular
+                                                    .copyWith(
+                                                  color: whiteColor,
+                                                  letterSpacing: 0.3,
+                                                  fontSize: 8,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
-                                      Icon(
-                                        Icons.add_alert,
-                                        color: whiteColor,
+                                      Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Icon(
+                                            Icons.date_range_outlined,
+                                            color: whiteColor,
+                                            size: 20,
+                                          ),
+                                          SizedBox(
+                                            width: 8,
+                                          ),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                '13 Sya’ban 1442 H',
+                                                style: googlePoppinsMedium
+                                                    .copyWith(
+                                                  color: orangeColor1,
+                                                  letterSpacing: 0.3,
+                                                  fontSize: 10,
+                                                ),
+                                              ),
+                                              Text(
+                                                'Sabtu, 27 Mar 2021',
+                                                style: googlePoppinsRegular
+                                                    .copyWith(
+                                                  color: whiteColor,
+                                                  letterSpacing: 0.3,
+                                                  fontSize: 8,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),
@@ -150,59 +211,11 @@ class _HomePagesState extends State<HomePages> {
                       ),
                     ],
                   ),
-                  Container(
-                    height: sy(116),
-                    margin: EdgeInsets.only(
-                      top: 32,
-                    ),
-                    width: double.infinity,
-                    child: ListView(
-                      padding: EdgeInsets.only(
-                        left: 20,
-                      ),
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        menuButton(
-                          image: 'image/quran.svg',
-                          titleName: "Al-Qur'an",
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              RouteName.listAlQuran,
-                            );
-                          },
-                        ),
-                        menuButton(
-                          image: 'image/quran.svg',
-                          titleName: "Hadits",
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              RouteName.listHadits,
-                            );
-                          },
-                        ),
-                        menuButton(
-                          image: 'image/praying.svg',
-                          titleName: "Jadwal\nSholat",
-                        ),
-                        menuButton(
-                          image: 'image/doa.svg',
-                          titleName: "Doa-Doa",
-                        ),
-                        menuButton(
-                          image: 'image/masjid.svg',
-                          titleName: "Masjid\nTerdekat",
-                        ),
-                      ],
-                    ),
-                  ),
+                  HomeMenu(),
                   Column(
                     children: [
                       Container(
                         margin: EdgeInsets.only(
-                          top: 20,
                           bottom: 16,
                         ),
                         padding: EdgeInsets.only(
@@ -229,10 +242,51 @@ class _HomePagesState extends State<HomePages> {
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           children: [
-                            groupNgaji(),
-                            groupNgaji(),
-                            groupNgaji(),
-                            groupNgaji(),
+                            HomeNgaji(),
+                            HomeNgaji(),
+                            HomeNgaji(),
+                            HomeNgaji(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                          top: 16,
+                          bottom: 16,
+                        ),
+                        padding: EdgeInsets.only(
+                          left: 20,
+                        ),
+                        height: sy(27),
+                        width: double.infinity,
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          'Jadwal Kajian',
+                          style: googlePoppinsMedium.copyWith(
+                            fontSize: 18,
+                            color: blackColor2,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: sy(100),
+                        width: double.infinity,
+                        child: ListView(
+                          padding: EdgeInsets.only(
+                            left: 20,
+                          ),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          children: [
+                            HomeKajian(),
+                            HomeKajian(),
+                            HomeKajian(),
+                            HomeKajian(),
+                            HomeKajian(),
                           ],
                         ),
                       ),
@@ -241,192 +295,6 @@ class _HomePagesState extends State<HomePages> {
                 ],
               ),
             ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget groupNgaji() {
-    return RelativeBuilder(
-      builder: (context, height, width, sy, sx) {
-        return Padding(
-          padding: EdgeInsets.only(
-            right: 16,
-          ),
-          child: Container(
-            height: sy(100),
-            width: sy(225),
-            decoration: BoxDecoration(
-              color: whiteColor,
-              borderRadius: BorderRadius.all(
-                Radius.circular(
-                  8.0,
-                ),
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ListTile(
-                  leading: Icon(
-                    Icons.image,
-                    size: sy(35),
-                  ),
-                  minLeadingWidth: sy(2),
-                  title: Text(
-                    'Belajar Tajwid Bacth 1',
-                    style: googlePoppinsMedium.copyWith(
-                      fontSize: 14,
-                      color: blackColor2,
-                      letterSpacing: 0.3,
-                    ),
-                  ),
-                  subtitle: Text(
-                    '11 - 20 Desember 2021',
-                    style: googlePoppinsRegular.copyWith(
-                      fontSize: 10,
-                      letterSpacing: 0.3,
-                      color: blackColor2,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 20,
-                    right: 24,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: sy(65),
-                            child: Stack(
-                              children: [
-                                Container(
-                                  height: sy(24),
-                                  width: sy(24),
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.red),
-                                ),
-                                Positioned(
-                                  left: sy(20),
-                                  child: Container(
-                                    height: sy(24),
-                                    width: sy(24),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.orange,
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  left: sy(40),
-                                  child: Container(
-                                    height: sy(24),
-                                    width: sy(24),
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Colors.blue,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            '+ 20 Anggota',
-                            style: googlePoppinsRegular.copyWith(
-                              fontSize: 10,
-                              letterSpacing: 0.3,
-                              color: blackColor2,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Icon(
-                        Icons.add_circle_outline,
-                        size: sy(16),
-                        color: greyColor,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
-  }
-
-  Widget menuButton({
-    String image,
-    String titleName,
-    VoidCallback onTap,
-  }) {
-    return RelativeBuilder(
-      builder: (context, height, width, sy, sx) {
-        return Padding(
-          padding: EdgeInsets.only(
-            right: 16,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              GestureDetector(
-                onTap: onTap,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: whiteColor,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(
-                            8.0,
-                          ),
-                        ),
-                      ),
-                      width: sy(72),
-                      height: sy(72),
-                    ),
-                    SvgPicture.asset(
-                      image,
-                      width: sy(42),
-                      height: sy(42),
-                    ),
-                  ],
-                ),
-              ),
-              // ),
-              Container(
-                padding: EdgeInsets.only(
-                  top: 4,
-                ),
-                height: sy(32),
-                child: Text(
-                  titleName,
-                  style: googlePoppinsRegular.copyWith(
-                    fontSize: 10,
-                    color: blackColor2,
-                    letterSpacing: 0.3,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            ],
           ),
         );
       },

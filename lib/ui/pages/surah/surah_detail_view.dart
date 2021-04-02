@@ -109,8 +109,7 @@ class _SurahDetailViewState extends State<SurahDetailView> {
                           width: double.infinity,
                           color: blueColor,
                         ),
-                        Container(
-                          height: sy(300),
+                        Expanded(
                           child: Center(
                             child: CircularProgressIndicator(),
                           ),
