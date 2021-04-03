@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_alquran/config/route_name.dart';
@@ -20,7 +21,7 @@ class _ShalatViewState extends State<ShalatView> {
           statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
           scaffold: Scaffold(
-            backgroundColor: greyColor1,
+            backgroundColor: whiteColor,
             body: SingleChildScrollView(
               child: Column(
                 children: [
@@ -64,12 +65,12 @@ class _ShalatViewState extends State<ShalatView> {
                                             children: [
                                               GestureDetector(
                                                 onTap: () {
-
                                                   Navigator.pop(context);
                                                 },
                                                 child: Icon(
                                                   Icons.arrow_back,
                                                   color: whiteColor,
+                                                  size: 24,
                                                 ),
                                               ),
                                               Icon(
@@ -170,6 +171,8 @@ class _ShalatViewState extends State<ShalatView> {
                             children: [
                               Icon(
                                 Icons.arrow_back_ios,
+                                size: 24,
+                                color: blueColor2,
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -178,9 +181,10 @@ class _ShalatViewState extends State<ShalatView> {
                                   Text(
                                     '17 Sha’ban 1442 H',
                                     style: googlePoppinsMedium.copyWith(
-                                        letterSpacing: 0.3,
-                                        fontSize: 18,
-                                        color: blueColor2),
+                                      letterSpacing: 0.3,
+                                      fontSize: 18,
+                                      color: blueColor2,
+                                    ),
                                   ),
                                   SizedBox(
                                     height: 4,
@@ -199,12 +203,75 @@ class _ShalatViewState extends State<ShalatView> {
                               ),
                               Icon(
                                 Icons.arrow_forward_ios,
+                                size: 24,
+                                color: blueColor2,
                               ),
                             ],
                           ),
                         ),
                       ),
                     ],
+                  ),
+                  Container(
+                    width: double.infinity,
+                    height: sy(54),
+                    decoration: BoxDecoration(
+                      color: greyColor1,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(16),
+                      ),
+                    ),
+                    margin: EdgeInsets.only(
+                      left: 20,
+                      right: 20,
+                    ),
+                    padding: EdgeInsets.only(
+                      left: 20,
+                      right: 20,
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Imsak',
+                          style: googlePoppinsMedium.copyWith(
+                            fontSize: 16,
+                            letterSpacing: 0.3,
+                            color: blackColor1,
+                          ),
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Text(
+                              '04:27',
+                              style: googlePoppinsMedium.copyWith(
+                                fontSize: 16,
+                                letterSpacing: 0.3,
+                                color: blackColor1,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 22,
+                            ),
+                            Container(
+                              height: sy(36),
+                              width: sy(36),
+                              decoration: BoxDecoration(
+                                color: whiteColor,
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.notifications_none,
+                                color: blueColor,
+                                size: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
