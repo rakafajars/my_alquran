@@ -1,5 +1,8 @@
+import 'package:date_format/date_format.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_alquran/theme/theme_color.dart';
 import 'package:my_alquran/theme/theme_text.dart';
@@ -7,6 +10,7 @@ import 'package:my_alquran/ui/pages/home/home_kajian.dart';
 import 'package:my_alquran/ui/pages/home/home_menu.dart';
 import 'package:my_alquran/ui/pages/home/home_ngaji.dart';
 import 'package:my_alquran/ui/widget/custome_page.dart';
+import 'package:my_alquran/utils/indonesia_locale.dart';
 import 'package:relative_scale/relative_scale.dart';
 
 class HomePages extends StatefulWidget {
@@ -15,6 +19,55 @@ class HomePages extends StatefulWidget {
 }
 
 class _HomePagesState extends State<HomePages> {
+  double latitude;
+  double longitude;
+  String nameCity;
+  String nameKecamatan;
+
+  // Fungsi untuk mencari poisisi saat ini
+  // Kondisi akan muncul ketika dibuka pertama kali
+  // atau ketika menekan tombol refresh
+  getLocation() async {
+    await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    ).then((Position position) {
+      setState(() {
+        latitude = position.latitude;
+        longitude = position.longitude;
+        getCityLocation(cityLatitude: latitude, cityLongitude: longitude);
+        print(latitude);
+      });
+    });
+  }
+
+  // Fungsi untuk mencari nama kota atau kecamatan
+  // berdasarkan latlong yang ada di fungsi getLocation
+  getCityLocation({
+    double cityLatitude,
+    double cityLongitude,
+  }) async {
+    List<Placemark> placeMarks = await placemarkFromCoordinates(
+      cityLatitude,
+      cityLongitude,
+    );
+
+    Placemark place = placeMarks[0];
+    setState(() {
+      nameCity = place.subAdministrativeArea;
+      nameKecamatan = place.locality;
+    });
+  }
+
+  // Tanggal
+  DateTime now;
+
+  @override
+  void initState() {
+    getLocation();
+    now = DateTime.now();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return RelativeBuilder(
@@ -117,9 +170,11 @@ class _HomePagesState extends State<HomePages> {
                                             width: 8,
                                           ),
                                           Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'Kota Bandung',
+                                                'Kota $nameCity',
                                                 style: googlePoppinsMedium
                                                     .copyWith(
                                                   color: orangeColor1,
@@ -128,7 +183,7 @@ class _HomePagesState extends State<HomePages> {
                                                 ),
                                               ),
                                               Text(
-                                                'Kecamatan Cibiru',
+                                                'Kecamatan $nameKecamatan',
                                                 style: googlePoppinsRegular
                                                     .copyWith(
                                                   color: whiteColor,
@@ -137,6 +192,17 @@ class _HomePagesState extends State<HomePages> {
                                                 ),
                                               ),
                                             ],
+                                          ),
+                                          SizedBox(
+                                            width: 4,
+                                          ),
+                                          GestureDetector(
+                                            onTap: getLocation,
+                                            child: Icon(
+                                              Icons.refresh,
+                                              color: whiteColor,
+                                              size: 10,
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -153,7 +219,8 @@ class _HomePagesState extends State<HomePages> {
                                             width: 8,
                                           ),
                                           Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
                                               Text(
                                                 '13 Sya’ban 1442 H',
@@ -165,7 +232,13 @@ class _HomePagesState extends State<HomePages> {
                                                 ),
                                               ),
                                               Text(
-                                                'Sabtu, 27 Mar 2021',
+                                                formatDate(
+                                                  now,
+                                                  [
+                                                    DD, ', ' , dd, ' ', M, ' ', yyyy
+                                                  ],
+                                                  locale: IndonesiaLocale(),
+                                                ),
                                                 style: googlePoppinsRegular
                                                     .copyWith(
                                                   color: whiteColor,
