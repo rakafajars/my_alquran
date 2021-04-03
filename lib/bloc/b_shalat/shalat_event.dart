@@ -5,14 +5,14 @@ abstract class ShalatEvent extends Equatable {
 }
 
 class GetListShalatFromApi extends ShalatEvent {
-  final String latitude;
-  final String longitude;
+  final String nameCity;
+  final String dateTime;
 
   GetListShalatFromApi({
-    @required this.latitude,
-    @required this.longitude,
+    @required this.nameCity,
+    @required this.dateTime,
   });
 
   @override
-  List<Object> get props => [latitude, longitude];
+  List<Object> get props => [nameCity, dateTime];
 }

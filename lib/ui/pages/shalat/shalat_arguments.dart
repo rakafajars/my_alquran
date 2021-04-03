@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 
 class ShalatArguments {
-  final String latitude;
-  final String longitude;
+  final String nameCity;
+  final String dateTime;
 
   ShalatArguments({
-    @required this.latitude,
-    @required this.longitude,
+    @required this.nameCity,
+    @required this.dateTime,
   });
 }

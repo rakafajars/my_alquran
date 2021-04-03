@@ -23,8 +23,8 @@ class ShalatBloc extends Bloc<ShalatEvent, ShalatState> {
       yield ShalatInitial();
       try {
         modelListShalat = await _repository.getListShalat(
-          latitude: event.latitude,
-          longitude: event.longitude,
+          nameCity: event.nameCity,
+          dateTime: event.dateTime,
         );
 
         yield ShalatLoadedSuccess(

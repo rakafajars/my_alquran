@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final modelListShalat = modelListShalatFromJson(jsonString);
+
 import 'dart:convert';
 
 ModelListShalat modelListShalatFromJson(String str) => ModelListShalat.fromJson(json.decode(str));
@@ -149,6 +153,7 @@ class Location {
     this.latitude,
     this.longitude,
     this.elevation,
+    this.city,
     this.country,
     this.countryCode,
     this.timezone,
@@ -157,16 +162,18 @@ class Location {
 
   double latitude;
   double longitude;
-  int elevation;
+  double elevation;
+  String city;
   String country;
   String countryCode;
   String timezone;
-  int localOffset;
+  double localOffset;
 
   factory Location.fromJson(Map<String, dynamic> json) => Location(
     latitude: json["latitude"].toDouble(),
     longitude: json["longitude"].toDouble(),
     elevation: json["elevation"],
+    city: json["city"],
     country: json["country"],
     countryCode: json["country_code"],
     timezone: json["timezone"],
@@ -177,6 +184,7 @@ class Location {
     "latitude": latitude,
     "longitude": longitude,
     "elevation": elevation,
+    "city": city,
     "country": country,
     "country_code": countryCode,
     "timezone": timezone,
@@ -198,8 +206,8 @@ class Settings {
   String school;
   String juristic;
   String highlat;
-  int fajrAngle;
-  int ishaAngle;
+  double fajrAngle;
+  double ishaAngle;
 
   factory Settings.fromJson(Map<String, dynamic> json) => Settings(
     timeformat: json["timeformat"],

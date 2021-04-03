@@ -5,6 +5,7 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hijri/hijri_calendar.dart';
+import 'package:intl/intl.dart';
 import 'package:my_alquran/theme/theme_color.dart';
 import 'package:my_alquran/theme/theme_text.dart';
 import 'package:my_alquran/ui/pages/home/home_kajian.dart';
@@ -57,17 +58,20 @@ class _HomePagesState extends State<HomePages> {
     setState(() {
       nameCity = place.subAdministrativeArea;
       nameKecamatan = place.locality;
+      print(nameCity);
     });
   }
 
   // Tanggal
   DateTime now;
   var _hijriTime = HijriCalendar.now();
+  String dateNowFormated;
 
   @override
   void initState() {
     getLocation();
     now = DateTime.now();
+    dateNowFormated = DateFormat('yyyy-MM-dd').format(now);
     super.initState();
   }
 
@@ -288,8 +292,8 @@ class _HomePagesState extends State<HomePages> {
                     ],
                   ),
                   HomeMenu(
-                    latitude: latitude.toString(),
-                    longitude: longitude.toString(),
+                    nameCity: nameCity,
+                    dateTime: dateNowFormated,
                   ),
                   Column(
                     children: [

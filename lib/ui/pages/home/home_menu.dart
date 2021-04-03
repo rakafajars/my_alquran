@@ -7,13 +7,13 @@ import 'package:my_alquran/ui/pages/shalat/shalat_arguments.dart';
 import 'package:relative_scale/relative_scale.dart';
 
 class HomeMenu extends StatelessWidget {
-  final String latitude;
-  final String longitude;
+  final String nameCity;
+  final String dateTime;
 
   const HomeMenu({
     Key key,
-    @required this.latitude,
-    @required this.longitude,
+    @required this.nameCity,
+    @required this.dateTime,
   }) : super(key: key);
 
   @override
@@ -61,8 +61,8 @@ class HomeMenu extends StatelessWidget {
                     context,
                     RouteName.listShalat,
                     arguments: ShalatArguments(
-                      latitude: latitude,
-                      longitude: longitude,
+                      nameCity: nameCity,
+                      dateTime: dateTime,
                     ),
                   );
                 },

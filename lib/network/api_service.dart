@@ -48,12 +48,12 @@ class ApiService implements Repository {
 
   @override
   Future<ModelListShalat> getListShalat({
-    latitude,
-    longitude,
+    nameCity,
+    dateTime,
   }) async {
     try {
       response = await dio.get(
-        '$baseUrlShalat/today.json?longitude=$longitude&latitude=$latitude',
+        '$baseUrlShalat/today.json?city=$nameCity&dat=$dateTime',
       );
 
       return ModelListShalat.fromJson(response.data);

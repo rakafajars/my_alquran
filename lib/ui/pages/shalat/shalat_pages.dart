@@ -13,8 +13,8 @@ class InitialShalatPages extends StatelessWidget {
       create: (context) => ShalatBloc()
         ..add(
           GetListShalatFromApi(
-            latitude: arg.latitude,
-            longitude: arg.longitude,
+            nameCity: arg.nameCity,
+            dateTime: arg.dateTime,
           ),
         ),
       child: ShalatView(),

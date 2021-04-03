@@ -11,7 +11,7 @@ abstract class Repository {
   });
 
   Future<ModelListShalat> getListShalat({
-    @required latitude,
-    @required longitude,
+    @required nameCity,
+    @required dateTime,
   });
 }
