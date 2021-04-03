@@ -3,9 +3,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:my_alquran/config/route_name.dart';
 import 'package:my_alquran/theme/theme_color.dart';
 import 'package:my_alquran/theme/theme_text.dart';
+import 'package:my_alquran/ui/pages/shalat/shalat_arguments.dart';
 import 'package:relative_scale/relative_scale.dart';
 
 class HomeMenu extends StatelessWidget {
+  final String latitude;
+  final String longitude;
+
+  const HomeMenu({
+    Key key,
+    @required this.latitude,
+    @required this.longitude,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return RelativeBuilder(
@@ -46,6 +56,16 @@ class HomeMenu extends StatelessWidget {
               menuButton(
                 image: 'image/praying.svg',
                 titleName: "Jadwal\nSholat",
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    RouteName.listShalat,
+                    arguments: ShalatArguments(
+                      latitude: latitude,
+                      longitude: longitude,
+                    ),
+                  );
+                },
               ),
               menuButton(
                 image: 'image/doa.svg',

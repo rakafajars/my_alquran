@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hijri/hijri_calendar.dart';
 import 'package:my_alquran/theme/theme_color.dart';
 import 'package:my_alquran/theme/theme_text.dart';
 import 'package:my_alquran/ui/pages/home/home_kajian.dart';
@@ -36,6 +37,7 @@ class _HomePagesState extends State<HomePages> {
         longitude = position.longitude;
         getCityLocation(cityLatitude: latitude, cityLongitude: longitude);
         print(latitude);
+        print(longitude);
       });
     });
   }
@@ -60,6 +62,7 @@ class _HomePagesState extends State<HomePages> {
 
   // Tanggal
   DateTime now;
+  var _hijriTime = HijriCalendar.now();
 
   @override
   void initState() {
@@ -223,7 +226,7 @@ class _HomePagesState extends State<HomePages> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                '13 Sya’ban 1442 H',
+                                                '${_hijriTime.hDay} ${_hijriTime.longMonthName} ${_hijriTime.hYear}',
                                                 style: googlePoppinsMedium
                                                     .copyWith(
                                                   color: orangeColor1,
@@ -284,7 +287,10 @@ class _HomePagesState extends State<HomePages> {
                       ),
                     ],
                   ),
-                  HomeMenu(),
+                  HomeMenu(
+                    latitude: latitude.toString(),
+                    longitude: longitude.toString(),
+                  ),
                   Column(
                     children: [
                       Container(

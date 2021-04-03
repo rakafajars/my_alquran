@@ -32,6 +32,7 @@ dependencies:
   geolocator: ^7.0.1
   geocoding: ^2.0.0
   date_format: ^2.0.2
+  hijri: ^2.0.3
 
 
 dev_dependencies:
