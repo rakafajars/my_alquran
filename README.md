@@ -10,5 +10,7 @@
 
 ## API :
 al-quran : https://github.com/sutanlab/quran-api
+
 jadwal Shalat : https://waktusholat.org/api/docs/day
+
 hadits : https://github.com/azharimm/hadits-api (Azhari Muhammad M)
