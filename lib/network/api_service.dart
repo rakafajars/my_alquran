@@ -21,7 +21,11 @@ class ApiService implements Repository {
       response = await dio.get(
         '$baseUrlAlQuran/surah',
       );
-      return ModelListAlQuran.fromJson(response.data);
+      return ModelListAlQuran.fromJson(
+        json.decode(
+          response.data,
+        ),
+      );
     } on DioError catch (e) {
       throw e.getErrorMessage();
     } catch (error, stacktrace) {
@@ -38,7 +42,11 @@ class ApiService implements Repository {
         '$baseUrlAlQuran/surah/$idSurah',
       );
 
-      return ModelDetailSurah.fromJson(response.data);
+      return ModelDetailSurah.fromJson(
+        json.decode(
+          response.data,
+        ),
+      );
     } on DioError catch (e) {
       throw e.getErrorMessage();
     } catch (error, stacktrace) {

@@ -190,7 +190,7 @@ class _HomePagesState extends State<HomePages> {
                                                 ),
                                               ),
                                               Text(
-                                                'Kecamatan $nameKecamatan',
+                                                '$nameKecamatan',
                                                 style: googlePoppinsRegular
                                                     .copyWith(
                                                   color: whiteColor,
@@ -242,7 +242,13 @@ class _HomePagesState extends State<HomePages> {
                                                 formatDate(
                                                   now,
                                                   [
-                                                    DD, ', ' , dd, ' ', M, ' ', yyyy
+                                                    DD,
+                                                    ', ',
+                                                    dd,
+                                                    ' ',
+                                                    M,
+                                                    ' ',
+                                                    yyyy
                                                   ],
                                                   locale: IndonesiaLocale(),
                                                 ),
@@ -294,6 +300,13 @@ class _HomePagesState extends State<HomePages> {
                   HomeMenu(
                     nameCity: nameCity,
                     dateTime: dateNowFormated,
+                    dateTimeHijri:
+                        '${_hijriTime.hDay} ${_hijriTime.longMonthName} ${_hijriTime.hYear}',
+                    time: formatDate(
+                      now,
+                      [DD, ', ', dd, ' ', M, ' ', yyyy],
+                      locale: IndonesiaLocale(),
+                    ),
                   ),
                   Column(
                     children: [

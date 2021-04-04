@@ -9,11 +9,15 @@ import 'package:relative_scale/relative_scale.dart';
 class HomeMenu extends StatelessWidget {
   final String nameCity;
   final String dateTime;
+  final String time;
+  final String dateTimeHijri;
 
   const HomeMenu({
     Key key,
     @required this.nameCity,
     @required this.dateTime,
+    @required this.time,
+    @required this.dateTimeHijri,
   }) : super(key: key);
 
   @override
@@ -35,7 +39,7 @@ class HomeMenu extends StatelessWidget {
             children: [
               menuButton(
                 image: 'image/quran.svg',
-                titleName: "Al-Qur'an",
+                titleName: "Al-Qur'an &\nHadits",
                 onTap: () {
                   Navigator.pushNamed(
                     context,
@@ -43,16 +47,16 @@ class HomeMenu extends StatelessWidget {
                   );
                 },
               ),
-              menuButton(
-                image: 'image/quran.svg',
-                titleName: "Hadits",
-                onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    RouteName.listHadits,
-                  );
-                },
-              ),
+              // menuButton(
+              //   image: 'image/quran.svg',
+              //   titleName: "Hadits",
+              //   onTap: () {
+              //     Navigator.pushNamed(
+              //       context,
+              //       RouteName.listHadits,
+              //     );
+              //   },
+              // ),
               menuButton(
                 image: 'image/praying.svg',
                 titleName: "Jadwal\nSholat",
@@ -63,6 +67,8 @@ class HomeMenu extends StatelessWidget {
                     arguments: ShalatArguments(
                       nameCity: nameCity,
                       dateTime: dateTime,
+                      dateTimeHijri: dateTimeHijri,
+                      time: time
                     ),
                   );
                 },

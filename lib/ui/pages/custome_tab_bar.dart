@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_alquran/theme/theme_color.dart';
 import 'package:my_alquran/theme/theme_text.dart';
 import 'package:my_alquran/ui/pages/alquran/alquran_pages.dart';
+import 'package:my_alquran/ui/pages/hadits/hadits_pages.dart';
 import 'package:my_alquran/ui/widget/custome_page.dart';
 import 'package:relative_scale/relative_scale.dart';
 
@@ -176,7 +177,7 @@ class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
                               text: 'Surat',
                             ),
                             Tab(
-                              text: 'Juz',
+                              text: 'Hadits',
                             ),
                             Tab(
                               text: 'Bookmark',
@@ -205,7 +206,7 @@ class _CustomeTabBarAlQuranState extends State<CustomeTabBarAlQuran> {
               body: TabBarView(
                 children: [
                   InitialAlQuranPages(),
-                  Container(),
+                  InitialHaditsPages(),
                   Container(),
                 ],
               ),

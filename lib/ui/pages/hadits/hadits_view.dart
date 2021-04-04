@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_alquran/cubit/c_hadits/hadits_cubit.dart';
+import 'package:my_alquran/theme/theme_color.dart';
+import 'package:my_alquran/theme/theme_text.dart';
 import 'package:my_alquran/ui/widget/custome_page.dart';
 import 'package:relative_scale/relative_scale.dart';
 
@@ -23,9 +25,7 @@ class _HaditsViewPageState extends State<HaditsViewPage> {
       builder: (context, height, width, sy, sx) {
         return CustomePage(
           scaffold: Scaffold(
-            appBar: AppBar(
-              title: Text('List Hadits'),
-            ),
+            backgroundColor: whiteColor,
             body: BlocConsumer<HaditsCubit, HaditsState>(
               listener: (context, state) {},
               builder: (context, state) {
@@ -41,34 +41,60 @@ class _HaditsViewPageState extends State<HaditsViewPage> {
                     itemBuilder: (context, int index) {
                       return GestureDetector(
                         onTap: () {},
-                        child: Container(
-                          height: sy(50),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                color: Colors.grey,
-                                width: 1.0,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: sy(32),
+                              width: double.infinity,
+                              child: ListTile(
+                                dense: true,
+                                minLeadingWidth: sy(5),
+                                leading: Container(
+                                  alignment: Alignment.center,
+                                  width: sy(36),
+                                  height: sy(36),
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: greyColor1,
+                                  ),
+                                  child: Text(
+                                    '${index + 1}',
+                                    style: googlePoppinsMedium.copyWith(
+                                      fontSize: 20,
+                                      color: blueColor,
+                                    ),
+                                  ),
+                                ),
+                                title: Text(
+                                  state.modeListHadits.data[index].name,
+                                  style: googlePoppinsMedium.copyWith(
+                                    fontSize: 16,
+                                    color: blackColor1,
+                                    letterSpacing: 0.3,
+                                  ),
+                                ),
+                                trailing: Text(
+                                  state.modeListHadits.data[index].available
+                                      .toString(),
+                                  style: googlePoppinsRegular.copyWith(
+                                    letterSpacing: 0.3,
+                                    color: Colors.grey,
+                                    fontSize: 12,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                          child: ListTile(
-                            title: Text(
-                              state.modeListHadits.data[index].name,
-                              style: GoogleFonts.robotoSlab(
-                                fontSize: sy(12),
-                                fontWeight: FontWeight.w600,
+                            Padding(
+                              padding: EdgeInsets.only(
+                                right: 20,
+                                left: 76,
+                              ),
+                              child: Divider(
+                                thickness: 1,
+                                color: greyColor,
                               ),
                             ),
-                            trailing: Text(
-                              state.modeListHadits.data[index].available
-                                  .toString(),
-                              style: GoogleFonts.robotoMono(
-                                fontSize: sy(12),
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          ),
+                          ],
                         ),
                       );
                     },
