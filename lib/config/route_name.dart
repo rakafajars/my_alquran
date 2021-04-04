@@ -4,4 +4,5 @@ class RouteName {
   static final String detailSurah = '/detailSurah';
   static final String listHadits = '/listHadits';
   static final String listShalat = '/listShalat';
+  static final String ListHaditsPeople = '/listHaditsPeople';
 }

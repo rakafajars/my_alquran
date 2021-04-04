@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_alquran/config/route_name.dart';
 import 'package:my_alquran/cubit/c_hadits/hadits_cubit.dart';
 import 'package:my_alquran/theme/theme_color.dart';
 import 'package:my_alquran/theme/theme_text.dart';
+import 'package:my_alquran/ui/pages/hadits/hadits_people/hadits_people_arguments.dart';
 import 'package:my_alquran/ui/widget/custome_page.dart';
 import 'package:relative_scale/relative_scale.dart';
 
@@ -40,7 +42,16 @@ class _HaditsViewPageState extends State<HaditsViewPage> {
                     itemCount: state.modeListHadits.data.length,
                     itemBuilder: (context, int index) {
                       return GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(
+                            context,
+                            RouteName.ListHaditsPeople,
+                            arguments: HaditsPeopleArguments(
+                              idPeople: state.modeListHadits.data[index].id,
+                              namePeople: state.modeListHadits.data[index].name,
+                            ),
+                          );
+                        },
                         child: Column(
                           children: [
                             Container(

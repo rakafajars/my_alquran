@@ -47,16 +47,6 @@ class HomeMenu extends StatelessWidget {
                   );
                 },
               ),
-              // menuButton(
-              //   image: 'image/quran.svg',
-              //   titleName: "Hadits",
-              //   onTap: () {
-              //     Navigator.pushNamed(
-              //       context,
-              //       RouteName.listHadits,
-              //     );
-              //   },
-              // ),
               menuButton(
                 image: 'image/praying.svg',
                 titleName: "Jadwal\nSholat",

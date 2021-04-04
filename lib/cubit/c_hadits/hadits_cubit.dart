@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:my_alquran/model/hadits/m_list_hadits.dart';
-import 'package:my_alquran/repositories/list_hadits_repository.dart';
+import 'file:///E:/Project/Project%20Baru/my_alquran/lib/repositories/hadits_repository/list_hadits_repository.dart';
 
 part 'hadits_state.dart';
 
