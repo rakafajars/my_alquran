@@ -35,8 +35,5 @@ class GetListHaditsPeopleRange extends HaditsEvent {
     @required this.range,
   });
   @override
-  List<Object> get props => [
-        idPeople,
-        range,
-      ];
+  List<Object> get props => [];
 }

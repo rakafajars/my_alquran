@@ -87,7 +87,6 @@ class ListHaditsRangeLoadedError extends HaditsState {
   ListHaditsRangeLoadedError({
     @required this.message,
   });
-
   @override
   List<Object> get props => [message];
 }

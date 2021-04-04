@@ -106,7 +106,6 @@ class HaditsBloc extends Bloc<HaditsEvent, HaditsState> {
         yield ListHaditsRangeLoadedSuccess(
           modelListHaditsRange: modelListHaditsRange,
         );
-
       } catch (e) {
         yield ListHaditsRangeLoadedError(
           message: "$e",

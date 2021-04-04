@@ -100,7 +100,7 @@ class ApiService implements Repository {
   }) async {
     try {
       Response response = await dio.get(
-        '$urlListHaditsPeople/$idPeople?range=$range',
+        '$urlListHaditsPeople/range/$idPeople?range=$range',
       );
 
       return ModelListHaditsRange.fromJson(
@@ -112,5 +112,4 @@ class ApiService implements Repository {
       throw showException(error, stacktrace);
     }
   }
-  
 }

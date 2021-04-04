@@ -48,10 +48,7 @@ class Data {
         total: json["total"],
         book: json["book"],
         hadits: List<HaditsRange>.from(
-          json["hadits"].map(
-            (x) => HaditsRange.fromJson(x),
-          ),
-        ),
+            json["hadits"].map((x) => HaditsRange.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
