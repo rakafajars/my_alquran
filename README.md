@@ -6,3 +6,9 @@
 ![Screenshot 2021-04-04 201633](https://user-images.githubusercontent.com/73903697/113510289-5b9a6980-9584-11eb-9b75-4c5a343abc12.png)
 ![Screenshot 2021-04-04 201647](https://user-images.githubusercontent.com/73903697/113510292-5b9a6980-9584-11eb-95dd-78e85096dd2d.png)
 ![Screenshot 2021-04-04 201657](https://user-images.githubusercontent.com/73903697/113510294-5c330000-9584-11eb-8581-5811ade42282.png)
+
+
+## API :
+al-quran : https://github.com/sutanlab/quran-api
+jadwal Shalat : https://waktusholat.org/api/docs/day
+hadits : https://github.com/azharimm/hadits-api (Azhari Muhammad M)
