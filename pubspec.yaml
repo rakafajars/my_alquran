@@ -34,6 +34,8 @@ dependencies:
   date_format: ^2.0.2
   hijri: ^2.0.3
   rxdart: ^0.26.0
+  numberpicker: ^2.0.1
+
 
 dev_dependencies:
   flutter_test:

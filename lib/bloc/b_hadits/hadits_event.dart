@@ -25,3 +25,18 @@ class GetPaginationListHaditsPeople extends HaditsEvent {
   @override
   List<Object> get props => [idPeople];
 }
+
+class GetListHaditsPeopleRange extends HaditsEvent {
+  final String idPeople;
+  final String range;
+
+  GetListHaditsPeopleRange({
+    @required this.idPeople,
+    @required this.range,
+  });
+  @override
+  List<Object> get props => [
+        idPeople,
+        range,
+      ];
+}

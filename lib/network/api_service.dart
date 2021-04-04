@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'file:///E:/Project/Project%20Baru/my_alquran/lib/model/al-quran/m_detail_surah.dart';
 import 'package:my_alquran/model/al-quran//m_list_alquran.dart';
 import 'package:my_alquran/model/hadits/m_list_hadits_people.dart';
+import 'package:my_alquran/model/hadits/m_list_hadits_range.dart';
 import 'package:my_alquran/model/m_list_shalat.dart';
 import 'package:my_alquran/network/api_repository.dart';
 import 'package:my_alquran/network/dio_client.dart';
@@ -91,4 +92,25 @@ class ApiService implements Repository {
       throw showException(error, stacktrace);
     }
   }
+
+  @override
+  Future<ModelListHaditsRange> getListHaditsRange({
+    String range,
+    String idPeople,
+  }) async {
+    try {
+      Response response = await dio.get(
+        '$urlListHaditsPeople/$idPeople?range=$range',
+      );
+
+      return ModelListHaditsRange.fromJson(
+        response.data,
+      );
+    } on DioError catch (e) {
+      throw e.getErrorMessage();
+    } catch (error, stacktrace) {
+      throw showException(error, stacktrace);
+    }
+  }
+  
 }

@@ -66,6 +66,7 @@ class _HaditsPeopleViewState extends State<HaditsPeopleView> {
         return CustomePage(
           scaffold: Scaffold(
             appBar: AppBar(
+              elevation: 0.0,
               backgroundColor: blueColor,
               title: Text(
                 'Hadits ${arg.namePeople}',
@@ -74,6 +75,16 @@ class _HaditsPeopleViewState extends State<HaditsPeopleView> {
                   color: whiteColor,
                 ),
               ),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(
+                    Icons.filter_list,
+                    color: whiteColor,
+                    size: 24,
+                  ),
+                  onPressed: () {},
+                ),
+              ],
             ),
             body: BlocConsumer<HaditsBloc, HaditsState>(
               listener: (context, state) {
@@ -109,8 +120,9 @@ class _HaditsPeopleViewState extends State<HaditsPeopleView> {
                             bottom: 16,
                           ),
                           width: double.infinity,
-                          color:
-                              index % 2 == 0 ? Color(0xFFF0F5FC) : Colors.white,
+                          color: index % 2 == 0
+                              ? Color(0xFFF0F5FC)
+                              : Colors.white,
                           child: ListTile(
                             dense: true,
                             minLeadingWidth: sy(5),
@@ -120,8 +132,9 @@ class _HaditsPeopleViewState extends State<HaditsPeopleView> {
                               height: sy(36),
                               decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                color:
-                                    index % 2 == 0 ? Colors.white : greyColor1,
+                                color: index % 2 == 0
+                                    ? Colors.white
+                                    : greyColor1,
                               ),
                               child: Text(
                                 state.hadits[index].number.toString(),

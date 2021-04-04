@@ -64,3 +64,30 @@ class ListHaditsPeopleLoadedError extends HaditsState {
   @override
   List<Object> get props => [message];
 }
+
+class ListHaditsRangeLoadInProgress extends HaditsState {
+  @override
+  List<Object> get props => [];
+}
+
+class ListHaditsRangeLoadedSuccess extends HaditsState {
+  final ModelListHaditsRange modelListHaditsRange;
+
+  ListHaditsRangeLoadedSuccess({
+    @required this.modelListHaditsRange,
+  });
+
+  @override
+  List<Object> get props => [modelListHaditsRange];
+}
+
+class ListHaditsRangeLoadedError extends HaditsState {
+  final String message;
+
+  ListHaditsRangeLoadedError({
+    @required this.message,
+  });
+
+  @override
+  List<Object> get props => [message];
+}

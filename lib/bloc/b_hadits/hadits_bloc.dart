@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 import 'package:my_alquran/model/hadits/m_list_hadits_people.dart';
+import 'package:my_alquran/model/hadits/m_list_hadits_range.dart';
 import 'package:my_alquran/network/api_repository.dart';
 import 'package:my_alquran/network/api_service.dart';
 import 'package:rxdart/rxdart.dart';
@@ -14,6 +15,7 @@ part 'hadits_state.dart';
 class HaditsBloc extends Bloc<HaditsEvent, HaditsState> {
   Repository _repository = ApiService();
   ModelListHaditsPeople modelListHaditsPeople;
+  ModelListHaditsRange modelListHaditsRange;
 
   HaditsBloc() : super(HaditsInitial());
 
@@ -56,7 +58,8 @@ class HaditsBloc extends Bloc<HaditsEvent, HaditsState> {
           message: "$e",
         );
       }
-    }  if (event is GetPaginationListHaditsPeople) {
+    }
+    if (event is GetPaginationListHaditsPeople) {
       print('Masuk ga');
 
       if (currentState is ListHaditsPeopleLoadedSuccess &&
@@ -90,6 +93,24 @@ class HaditsBloc extends Bloc<HaditsEvent, HaditsState> {
             message: "$e",
           );
         }
+      }
+    }
+    if (event is GetListHaditsPeopleRange) {
+      yield ListHaditsRangeLoadInProgress();
+      try {
+        modelListHaditsRange = await _repository.getListHaditsRange(
+          idPeople: event.idPeople,
+          range: event.range,
+        );
+
+        yield ListHaditsRangeLoadedSuccess(
+          modelListHaditsRange: modelListHaditsRange,
+        );
+
+      } catch (e) {
+        yield ListHaditsRangeLoadedError(
+          message: "$e",
+        );
       }
     }
   }
