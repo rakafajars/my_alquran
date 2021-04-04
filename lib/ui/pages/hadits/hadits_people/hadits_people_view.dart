@@ -59,6 +59,8 @@ class _HaditsPeopleViewState extends State<HaditsPeopleView> {
   @override
   void dispose() {
     _haditsBloc.close();
+    firstFilter.dispose();
+    lastFilter.dispose();
     super.dispose();
   }
 
@@ -105,6 +107,22 @@ class _HaditsPeopleViewState extends State<HaditsPeopleView> {
                 if (state is ListHaditsRangeLoadInProgress) {
                   _refreshCompleter?.complete();
                   _refreshCompleter = Completer();
+                }
+                if (state is ListHaditsRangeLoadedError) {
+                  final snackBar = SnackBar(
+                    content: Text(state.message),
+                    action: SnackBarAction(
+                      label: 'Reset',
+                      onPressed: () {
+                        _haditsBloc
+                          ..add(
+                            GetListHaditsPeople(idPeople: arg.idPeople),
+                          );
+                      },
+                    ),
+                  );
+
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
               },
               builder: (context, state) {
@@ -193,6 +211,33 @@ class _HaditsPeopleViewState extends State<HaditsPeopleView> {
                     ),
                   );
                 }
+                // if (state is ListHaditsRangeLoadedError) {
+                //   return Center(
+                //     child: Column(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: [
+                //         Text(
+                //           state.message,
+                //         ),
+                //         ElevatedButton(
+                //           onPressed: () {
+                //             _haditsBloc
+                //               ..add(
+                //                 GetListHaditsPeopleRange(
+                //                   idPeople: arg.idPeople,
+                //                   range:
+                //                       '${firstFilter.text}-${lastFilter.text}',
+                //                 ),
+                //               );
+                //           },
+                //           child: Text(
+                //             'Refresh',
+                //           ),
+                //         ),
+                //       ],
+                //     ),
+                //   );
+                // }
                 return Container();
               },
             ),
@@ -347,6 +392,7 @@ class _HaditsPeopleViewState extends State<HaditsPeopleView> {
                             primary: blueColor, // background
                           ),
                           onPressed: () {
+                            Navigator.pop(context);
                             _haditsBloc
                               ..add(
                                 GetListHaditsPeopleRange(
@@ -373,12 +419,15 @@ class _HaditsPeopleViewState extends State<HaditsPeopleView> {
                         child: ElevatedButton(
                           onPressed: () {
                             Navigator.pop(context);
+                            firstFilter.clear();
+                            lastFilter.clear();
                             _haditsBloc
                               ..add(
                                 GetListHaditsPeople(
                                   idPeople: idPeople,
                                 ),
                               );
+                            setState(() {});
                           },
                           child: Text(
                             'Reset Filter',

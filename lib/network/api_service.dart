@@ -107,7 +107,7 @@ class ApiService implements Repository {
         response.data,
       );
     } on DioError catch (e) {
-      throw e.getErrorMessage();
+      throw e.response.data["error"];
     } catch (error, stacktrace) {
       throw showException(error, stacktrace);
     }
