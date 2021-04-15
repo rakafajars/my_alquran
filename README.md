@@ -1,3 +1,6 @@
+# Design 
+https://dribbble.com/shots/15375120-Al-Hijrah-App
+
 # my_alquran
 
 ![Screenshot 2021-04-04 201536](https://user-images.githubusercontent.com/73903697/113510282-59380f80-9584-11eb-8c94-c77a113c2119.png)
